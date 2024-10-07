@@ -1,5 +1,7 @@
 using DotNetEnv;
 using HotelAPI.Data;
+using HotelAPI.Interfaces;
+using HotelAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 Env.Load();
@@ -21,9 +23,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(DefaultConnection, new MySqlServerVersion(new Version(8, 0))));
 
+//Add the service that allow to work with Rooms
+
+// Register the RoomService and IRoomService
+builder.Services.AddScoped<IRoomService, RoomService>();
+
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -37,7 +45,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 // app.UseAuthentication();
 // app.UseAuthorization();
-// app.MapControllers();
+app.MapControllers();
 
 
 app.Run();
