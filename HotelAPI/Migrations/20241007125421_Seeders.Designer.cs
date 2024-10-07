@@ -4,6 +4,7 @@ using HotelAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241007125421_Seeders")]
+    partial class Seeders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -293,16 +296,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "101",
+                            RoomNumber = "1-1",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 2,
                             PricePerNight = 80m,
-                            RoomNumber = "102",
+                            RoomNumber = "1-2",
                             RoomTypeId = 2
                         },
                         new
@@ -311,16 +314,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 2,
                             PricePerNight = 150m,
-                            RoomNumber = "103",
+                            RoomNumber = "1-3",
                             RoomTypeId = 3
                         },
                         new
                         {
                             Id = 4,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 4,
                             PricePerNight = 200m,
-                            RoomNumber = "104",
+                            RoomNumber = "1-4",
                             RoomTypeId = 4
                         },
                         new
@@ -329,16 +332,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "105",
+                            RoomNumber = "1-5",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 6,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "106",
+                            RoomNumber = "1-6",
                             RoomTypeId = 1
                         },
                         new
@@ -347,16 +350,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "107",
+                            RoomNumber = "1-7",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 8,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "108",
+                            RoomNumber = "1-8",
                             RoomTypeId = 1
                         },
                         new
@@ -365,25 +368,25 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "109",
+                            RoomNumber = "1-9",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 10,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "110",
+                            RoomNumber = "1-10",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 11,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "201",
+                            RoomNumber = "2-1",
                             RoomTypeId = 1
                         },
                         new
@@ -392,16 +395,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 2,
                             PricePerNight = 80m,
-                            RoomNumber = "202",
+                            RoomNumber = "2-2",
                             RoomTypeId = 2
                         },
                         new
                         {
                             Id = 13,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 2,
                             PricePerNight = 150m,
-                            RoomNumber = "203",
+                            RoomNumber = "2-3",
                             RoomTypeId = 3
                         },
                         new
@@ -410,16 +413,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 4,
                             PricePerNight = 200m,
-                            RoomNumber = "204",
+                            RoomNumber = "2-4",
                             RoomTypeId = 4
                         },
                         new
                         {
                             Id = 15,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "205",
+                            RoomNumber = "2-5",
                             RoomTypeId = 1
                         },
                         new
@@ -428,16 +431,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "206",
+                            RoomNumber = "2-6",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 17,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "207",
+                            RoomNumber = "2-7",
                             RoomTypeId = 1
                         },
                         new
@@ -446,16 +449,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "208",
+                            RoomNumber = "2-8",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 19,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "209",
+                            RoomNumber = "2-9",
                             RoomTypeId = 1
                         },
                         new
@@ -464,7 +467,7 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "210",
+                            RoomNumber = "2-10",
                             RoomTypeId = 1
                         },
                         new
@@ -473,16 +476,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "301",
+                            RoomNumber = "3-1",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 22,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 2,
                             PricePerNight = 80m,
-                            RoomNumber = "302",
+                            RoomNumber = "3-2",
                             RoomTypeId = 2
                         },
                         new
@@ -491,16 +494,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 2,
                             PricePerNight = 150m,
-                            RoomNumber = "303",
+                            RoomNumber = "3-3",
                             RoomTypeId = 3
                         },
                         new
                         {
                             Id = 24,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 4,
                             PricePerNight = 200m,
-                            RoomNumber = "304",
+                            RoomNumber = "3-4",
                             RoomTypeId = 4
                         },
                         new
@@ -509,16 +512,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "305",
+                            RoomNumber = "3-5",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 26,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "306",
+                            RoomNumber = "3-6",
                             RoomTypeId = 1
                         },
                         new
@@ -527,16 +530,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "307",
+                            RoomNumber = "3-7",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 28,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "308",
+                            RoomNumber = "3-8",
                             RoomTypeId = 1
                         },
                         new
@@ -545,25 +548,25 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "309",
+                            RoomNumber = "3-9",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 30,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "310",
+                            RoomNumber = "3-10",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 31,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "401",
+                            RoomNumber = "4-1",
                             RoomTypeId = 1
                         },
                         new
@@ -572,16 +575,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 2,
                             PricePerNight = 80m,
-                            RoomNumber = "402",
+                            RoomNumber = "4-2",
                             RoomTypeId = 2
                         },
                         new
                         {
                             Id = 33,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 2,
                             PricePerNight = 150m,
-                            RoomNumber = "403",
+                            RoomNumber = "4-3",
                             RoomTypeId = 3
                         },
                         new
@@ -590,16 +593,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 4,
                             PricePerNight = 200m,
-                            RoomNumber = "404",
+                            RoomNumber = "4-4",
                             RoomTypeId = 4
                         },
                         new
                         {
                             Id = 35,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "405",
+                            RoomNumber = "4-5",
                             RoomTypeId = 1
                         },
                         new
@@ -608,16 +611,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "406",
+                            RoomNumber = "4-6",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 37,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "407",
+                            RoomNumber = "4-7",
                             RoomTypeId = 1
                         },
                         new
@@ -626,16 +629,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "408",
+                            RoomNumber = "4-8",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 39,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "409",
+                            RoomNumber = "4-9",
                             RoomTypeId = 1
                         },
                         new
@@ -644,7 +647,7 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "410",
+                            RoomNumber = "4-10",
                             RoomTypeId = 1
                         },
                         new
@@ -653,16 +656,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "501",
+                            RoomNumber = "5-1",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 42,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 2,
                             PricePerNight = 80m,
-                            RoomNumber = "502",
+                            RoomNumber = "5-2",
                             RoomTypeId = 2
                         },
                         new
@@ -671,16 +674,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 2,
                             PricePerNight = 150m,
-                            RoomNumber = "503",
+                            RoomNumber = "5-3",
                             RoomTypeId = 3
                         },
                         new
                         {
                             Id = 44,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 4,
                             PricePerNight = 200m,
-                            RoomNumber = "504",
+                            RoomNumber = "5-4",
                             RoomTypeId = 4
                         },
                         new
@@ -689,16 +692,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "505",
+                            RoomNumber = "5-5",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 46,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "506",
+                            RoomNumber = "5-6",
                             RoomTypeId = 1
                         },
                         new
@@ -707,16 +710,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "507",
+                            RoomNumber = "5-7",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 48,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "508",
+                            RoomNumber = "5-8",
                             RoomTypeId = 1
                         },
                         new
@@ -725,16 +728,16 @@ namespace HotelAPI.Migrations
                             Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "509",
+                            RoomNumber = "5-9",
                             RoomTypeId = 1
                         },
                         new
                         {
                             Id = 50,
-                            Availability = false,
+                            Availability = true,
                             MaxOccupancyPersons = 1,
                             PricePerNight = 50m,
-                            RoomNumber = "510",
+                            RoomNumber = "5-10",
                             RoomTypeId = 1
                         });
                 });

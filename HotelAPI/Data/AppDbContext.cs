@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HotelAPI.Models;
+using HotelAPI.Seeders;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelAPI.Data
@@ -19,6 +20,13 @@ namespace HotelAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            RoomTypeSeeder.Seed(modelBuilder);
+            RoomSeeder.Seed(modelBuilder);
+            GuestSeeder.Seed(modelBuilder);
+            EmployeeSeeder.Seed(modelBuilder);
+            BookingSeeder.Seed(modelBuilder);
+
+
             base.OnModelCreating(modelBuilder);
         }
     }
