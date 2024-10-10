@@ -18,9 +18,9 @@ namespace ProductsAPI.Services
             _context = context;
         }
 
-        public async Task<List<CategoryDTO>> GetAllCategoriesAsync()
+        public async Task<(List<CategoryDTO> categories, string message)> GetAllCategoriesAsync()
         {
-            return await _context.Categories
+            var categories = await _context.Categories
                 .Select(c => new CategoryDTO
                 {
                     Id = c.Id,
@@ -28,9 +28,16 @@ namespace ProductsAPI.Services
                     Description = c.Description
                 })
                 .ToListAsync();
+
+            if (categories == null || categories.Count == 0)
+            {
+                return (null, "No categories found. Please check back later!");
+            }
+
+            return (categories, "Categories retrieved successfully!");
         }
 
-        public async Task<CategoryDTO> GetCategoryByIdAsync(int id)
+        public async Task<(CategoryDTO category, string message)> GetCategoryByIdAsync(int id)
         {
             var category = await _context.Categories
                 .Where(c => c.Id == id)
@@ -42,7 +49,12 @@ namespace ProductsAPI.Services
                 })
                 .FirstOrDefaultAsync();
 
-            return category; // Return null if not found
+            if (category == null)
+            {
+                return (null, $"Category with ID {id} not found. Please check the ID and try again.");
+            }
+
+            return (category, "Category retrieved successfully!");
         }
     }
 }

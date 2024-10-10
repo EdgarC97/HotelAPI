@@ -1,6 +1,8 @@
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 using ProductsAPI.Data;
+using ProductsAPI.Interfaces;
+using ProductsAPI.Services;
 
 // Load environment variables using the Env.File
 
@@ -23,9 +25,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(DefaultConnection, new MySqlServerVersion(new Version(8, 0))));
 
-// Add services to the container.
-builder.Services.AddEndpointsApiExplorer();
+
+// Register application services
+builder.Services.AddScoped<ICategoryService, CategoryService>(); // Category service registration
+
+// Add services to the container
+builder.Services.AddControllers(); // Add controllers for API endpoints
+builder.Services.AddEndpointsApiExplorer(); // Add support for endpoint exploration
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 
@@ -36,7 +44,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection(); 
+app.UseAuthentication(); 
+app.UseAuthorization(); 
+app.MapControllers(); 
 
 
 app.Run();

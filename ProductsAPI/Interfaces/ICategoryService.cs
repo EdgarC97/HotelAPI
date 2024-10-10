@@ -8,7 +8,7 @@ namespace ProductsAPI.Interfaces
 {
     public interface ICategoryService
     {
-        Task<List<CategoryDTO>> GetAllCategoriesAsync();
-        Task<CategoryDTO> GetCategoryByIdAsync(int id);
+        Task<(List<CategoryDTO> categories, string message)> GetAllCategoriesAsync();
+        Task<(CategoryDTO category, string message)> GetCategoryByIdAsync(int id);
     }
 }
