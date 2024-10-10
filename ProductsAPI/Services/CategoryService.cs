@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using ProductsAPI.Data;
 using ProductsAPI.DTOS;
 using ProductsAPI.Interfaces;
+using ProductsAPI.Models;
 
 namespace ProductsAPI.Services
 {
@@ -55,6 +56,74 @@ namespace ProductsAPI.Services
             }
 
             return (category, "Category retrieved successfully!");
+        }
+
+        // Asynchronously creates a new category based on the provided CreateCategoryDTO.
+        public async Task<(bool IsSuccess, CategoryDTO Category, string Message)> CreateCategoryAsync(CreateCategoryDTO createCategoryDto)
+        {
+
+            // Create a new Category entity from the provided DTO.
+            var category = new Category
+            {
+                Name = createCategoryDto.Name,
+                Description = createCategoryDto.Description,
+            };
+
+            // Add the new category to the context and save changes to the database.
+            _context.Categories.Add(category);
+            await _context.SaveChangesAsync();
+
+            // Map the new Category entity to CategoryDTO for the response.
+            var categoryDto = new CategoryDTO
+            {
+                Id = category.Id,
+                Name = createCategoryDto.Name,
+                Description = createCategoryDto.Description,
+            };
+
+            return (true, categoryDto, "Category created successfully."); // Return success result.
+        }
+
+        // Asynchronously deletes a category by its ID.
+        public async Task<(bool IsSuccess, string Message)> DeleteCategoryAsync(int id)
+        {
+            var category = await _context.Categories.FindAsync(id); // Find the category by ID.
+            if (category == null)
+            {
+                return (false, "Category not found."); // Return failure if category is not found.
+            }
+
+            // Remove the category from the context and save changes to the database.
+            _context.Categories.Remove(category);
+            await _context.SaveChangesAsync();
+
+            return (true, "Category deleted successfully."); // Return success result.
+        }
+
+        public async Task<(bool IsSuccess, CategoryDTO Category, string Message)> UpdateCategoryAsync(int id, UpdateCategoryDTO updateCategoryDto)
+        {
+            var category = await _context.Categories.FindAsync(id); // Find the category by ID.
+            if (category == null)
+            {
+                return (false, null, "Category not found."); // Return failure if the category is not found.
+            }
+
+            // Update the category properties with the new values from the DTO.
+            category.Name = updateCategoryDto.Name;
+            category.Description = updateCategoryDto.Description;
+
+            // Save changes to the database.
+            await _context.SaveChangesAsync();
+
+            // Map the updated Category entity to CategoryDTO for the response.
+            var categoryDto = new CategoryDTO
+            {
+                Id = category.Id,
+                Name = category.Name,
+                Description = category.Description
+            };
+
+            return (true, categoryDto, "Category updated successfully."); // Return success result.
         }
     }
 }

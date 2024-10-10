@@ -23,7 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configure Entity Framework Core to use MySQL with the constructed connection string
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(DefaultConnection, new MySqlServerVersion(new Version(8, 0))));
+    options.UseMySql(DefaultConnection, new MySqlServerVersion(new Version(8, 10))));
 
 
 // Register application services
