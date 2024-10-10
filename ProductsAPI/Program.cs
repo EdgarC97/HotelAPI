@@ -28,6 +28,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Register application services
 builder.Services.AddScoped<ICategoryService, CategoryService>(); // Category service registration
+builder.Services.AddScoped<IProductService, ProductService>(); // Product service registration
 
 // Add services to the container
 builder.Services.AddControllers(); // Add controllers for API endpoints
