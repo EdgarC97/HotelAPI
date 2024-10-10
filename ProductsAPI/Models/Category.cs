@@ -20,7 +20,6 @@ namespace ProductsAPI.Models
         [StringLength(500)]
         public string Description { get; set; }
 
-        // Navegación para la relación con Product
         public ICollection<Product> Products { get; set; }
     }
 }
