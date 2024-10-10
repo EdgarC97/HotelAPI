@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using ProductsAPI.Data;
 using ProductsAPI.DTOS;
 using ProductsAPI.Interfaces;
+using ProductsAPI.Models;
 
 namespace ProductsAPI.Services
 {
@@ -61,6 +62,113 @@ namespace ProductsAPI.Services
             }
 
             return (product, "Product retrieved successfully!");
+        }
+
+        // Asynchronously creates a new product based on the provided CreateProductDTO.
+        public async Task<(bool IsSuccess, ProductDTO Product, string Message)> CreateProductAsync(CreateProductDTO createProductDto)
+        {
+            // Validate input data
+            if (string.IsNullOrWhiteSpace(createProductDto.Name))
+            {
+                return (false, null, "Product name is required.");
+            }
+
+            if (createProductDto.Price <= 0)
+            {
+                return (false, null, "Price must be greater than zero.");
+            }
+
+            if (createProductDto.Stock < 0)
+            {
+                return (false, null, "Stock cannot be negative.");
+            }
+
+            if (createProductDto.CategoryId <= 0)
+            {
+                return (false, null, "Invalid category ID.");
+            }
+
+            // Check if category exists
+            var categoryExists = await _context.Categories.AnyAsync(c => c.Id == createProductDto.CategoryId);
+            if (!categoryExists)
+            {
+                return (false, null, "Category does not exist.");
+            }
+
+            // Create a new Product entity from the provided DTO.
+            var product = new Product
+            {
+                Name = createProductDto.Name,
+                Description = createProductDto.Description,
+                Price = createProductDto.Price,
+                Stock = createProductDto.Stock,
+                CategoryId = createProductDto.CategoryId  // Asignar CategoryId
+            };
+
+            // Add the new product to the context and save changes to the database.
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            // Map the new Product entity to ProductDTO for the response.
+            var productDto = new ProductDTO
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                Stock = product.Stock,
+                CategoryId = product.CategoryId
+            };
+
+            return (true, productDto, "Product created successfully.");
+        }
+
+        // Asynchronously deletes a product by its ID.
+        public async Task<(bool IsSuccess, string Message)> DeleteProductAsync(int id)
+        {
+            var product = await _context.Products.FindAsync(id); // Find the product by ID.
+            if (product == null)
+            {
+                return (false, "Product not found."); // Return failure if product is not found.
+            }
+
+            // Remove the product from the context and save changes to the database.
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
+            return (true, "Product deleted successfully."); // Return success result.
+        }
+
+        public async Task<(bool IsSuccess, ProductDTO Product, string Message)> UpdateProductAsync(int id, UpdateProductDTO updateProductDto)
+        {
+            var product = await _context.Products.FindAsync(id); // Find the product by ID.
+            if (product == null)
+            {
+                return (false, null, "Product not found."); // Return failure if the product is not found.
+            }
+
+            // Update the product properties with the new values from the DTO.
+            product.Name = updateProductDto.Name;
+            product.Description = updateProductDto.Description;
+            product.Price = updateProductDto.Price;
+            product.Stock = updateProductDto.Stock;
+            product.CategoryId = updateProductDto.CategoryId;
+
+            // Save changes to the database.
+            await _context.SaveChangesAsync();
+
+            // Map the updated Product entity to ProductDTO for the response.
+            var productDto = new ProductDTO
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                Stock = product.Stock,
+                CategoryId = product.CategoryId 
+            };
+
+            return (true, productDto, "Product updated successfully."); // Return success result.
         }
     }
 }
