@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductsAPI.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
@@ -22,6 +23,7 @@ namespace ProductsAPI.Controllers.v1.ProductControllers
         [SwaggerResponse(200, "Product deleted successfully.")]
         [SwaggerResponse(404, "Product not found.")]
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var result = await _productService.DeleteProductAsync(id);
