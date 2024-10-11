@@ -18,5 +18,14 @@ namespace ProductsAPI.Interfaces
         Task<(bool IsSuccess, string Message)> DeleteProductAsync(int id);
 
         Task<(bool IsSuccess, ProductDTO Product, string Message)> UpdateProductAsync(int id, UpdateProductDTO updateProductDto);
+
+        // Search for products by keyword
+        Task<List<ProductDTO>> SearchProductsAsync(string keyword);
+
+        // Get low stock products
+        Task<List<ProductDTO>> GetLowStockProductsAsync(int threshold);
+
+        // // Get products by category
+        Task<List<ProductDTO>> GetProductsByCategoryAsync(int categoryId);
     }
 }

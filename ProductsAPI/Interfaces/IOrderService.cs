@@ -13,5 +13,7 @@ namespace ProductsAPI.Interfaces
         Task<(bool IsSuccess, OrderDTO Order, string Message)> CreateOrderAsync(CreateOrderDTO createOrderDto);
         Task<(bool IsSuccess, string Message)> DeleteOrderAsync(int id);
         Task<(bool IsSuccess, OrderDTO Order, string Message)> UpdateOrderAsync(int id, UpdateOrderDTO updateOrderDto);
+        Task<(List<OrderDTO> orders, string message)> GetOrdersByCustomerNameAsync(string customerName);
+        Task<(List<OrderDTO> orders, string message)> GetOrdersByDateAsync(DateTime date);
     }
 }

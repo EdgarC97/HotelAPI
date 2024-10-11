@@ -165,10 +165,64 @@ namespace ProductsAPI.Services
                 Description = product.Description,
                 Price = product.Price,
                 Stock = product.Stock,
-                CategoryId = product.CategoryId 
+                CategoryId = product.CategoryId
             };
 
             return (true, productDto, "Product updated successfully."); // Return success result.
+        }
+
+        public async Task<List<ProductDTO>> SearchProductsAsync(string keyword)
+        {
+            return await _context.Products
+                .Where(p => p.Name.Contains(keyword) || p.Description.Contains(keyword))
+                .Select(p => new ProductDTO
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    Stock = p.Stock,
+                    CategoryId = p.CategoryId
+                })
+                .ToListAsync();
+        }
+
+        public async Task<List<ProductDTO>> GetLowStockProductsAsync(int threshold)
+        {
+            var lowStockProducts = await _context.Products
+                .Where(p => p.Stock <= threshold)
+                .Select(c => new ProductDTO
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Description = c.Description,
+                    Price = c.Price,
+                    Stock = c.Stock,
+                    CategoryId = c.CategoryId
+                })
+                .ToListAsync();
+
+            if (lowStockProducts == null || lowStockProducts.Count == 0)
+            {
+                return null; // Or return an empty list
+            }
+
+            return lowStockProducts;
+        }
+        public async Task<List<ProductDTO>> GetProductsByCategoryAsync(int categoryId)
+        {
+            return await _context.Products
+                .Where(p => p.CategoryId == categoryId)
+                .Select(p => new ProductDTO
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    Stock = p.Stock,
+                    CategoryId = p.CategoryId
+                })
+                .ToListAsync();
         }
     }
 }

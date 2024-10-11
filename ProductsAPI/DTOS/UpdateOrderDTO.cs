@@ -8,6 +8,7 @@ namespace ProductsAPI.DTOS
 {
     public class UpdateOrderDTO
     {
+        public DateTime OrderDate { get; set; }
         [Required]
         [StringLength(100)]
         public string CustomerName { get; set; }

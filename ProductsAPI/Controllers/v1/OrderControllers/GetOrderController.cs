@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ProductsAPI.DTOS;
 using ProductsAPI.Interfaces;
 
 namespace ProductsAPI.Controllers.v1.OrderControllers
@@ -38,6 +39,28 @@ namespace ProductsAPI.Controllers.v1.OrderControllers
                 return NotFound(message);
             }
             return Ok(order);
+        }
+
+        [HttpGet("customer/{customerName}")]
+        public async Task<ActionResult<List<OrderDTO>>> GetOrdersByCustomerName(string customerName)
+        {
+            var (orders, message) = await _orderService.GetOrdersByCustomerNameAsync(customerName);
+            if (orders == null)
+            {
+                return NotFound(new { message });
+            }
+            return Ok(new { message, data = orders });
+        }
+
+        [HttpGet("date/{date}")]
+        public async Task<ActionResult<List<OrderDTO>>> GetOrdersByDate(DateTime date)
+        {
+            var (orders, message) = await _orderService.GetOrdersByDateAsync(date);
+            if (orders == null)
+            {
+                return NotFound(new { message });
+            }
+            return Ok(new { message, data = orders });
         }
     }
 }
