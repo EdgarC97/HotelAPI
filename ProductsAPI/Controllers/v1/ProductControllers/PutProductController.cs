@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProductsAPI.DTOS;
 using ProductsAPI.Interfaces;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace ProductsAPI.Controllers.v1.ProductControllers
 {
@@ -17,6 +18,10 @@ namespace ProductsAPI.Controllers.v1.ProductControllers
         {
         }
 
+        // PUT: api/v1/products/{id}
+        [SwaggerOperation(Summary = "Update an existing product", Description = "Modifies the details of an existing product.")]
+        [SwaggerResponse(200, "Product updated successfully.", typeof(ProductDTO))]
+        [SwaggerResponse(404, "Product not found.")]
         [HttpPut("{id}")]
         public async Task<ActionResult<ProductDTO>> UpdateProduct(int id, [FromBody] UpdateProductDTO updateProductDto)
         {

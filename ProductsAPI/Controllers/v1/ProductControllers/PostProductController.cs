@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProductsAPI.DTOS;
 using ProductsAPI.Interfaces;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace ProductsAPI.Controllers.v1.ProductControllers
 {
@@ -17,6 +18,10 @@ namespace ProductsAPI.Controllers.v1.ProductControllers
         {
         }
 
+        // POST: api/v1/products
+        [SwaggerOperation(Summary = "Create a new product", Description = "Adds a new product to the system.")]
+        [SwaggerResponse(200, "Product created successfully.", typeof(ProductDTO))]
+        [SwaggerResponse(400, "Invalid product details.")]
         [HttpPost]
         public async Task<ActionResult<ProductDTO>> CreateProduct([FromBody] CreateProductDTO createProductDto)
         {

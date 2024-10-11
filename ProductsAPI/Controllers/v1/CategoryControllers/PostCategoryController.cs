@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProductsAPI.DTOS;
 using ProductsAPI.Interfaces;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace ProductsAPI.Controllers.v1.CategoryControllers
 {
@@ -17,6 +18,10 @@ namespace ProductsAPI.Controllers.v1.CategoryControllers
         {
         }
 
+        // POST: api/v1/categories
+        [SwaggerOperation(Summary = "Create a new category", Description = "Adds a new category to the system.")]
+        [SwaggerResponse(200, "Category created successfully.", typeof(CategoryDTO))]
+        [SwaggerResponse(400, "Invalid category details.")]
         [HttpPost]
         public async Task<ActionResult<CategoryDTO>> CreateCategory([FromBody] CreateCategoryDTO createCategoryDto)
         {

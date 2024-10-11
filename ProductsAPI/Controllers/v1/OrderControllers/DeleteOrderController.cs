@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProductsAPI.Interfaces;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace ProductsAPI.Controllers.v1.OrderControllers
 {
@@ -16,6 +17,10 @@ namespace ProductsAPI.Controllers.v1.OrderControllers
         {
         }
 
+        // DELETE: api/v1/orders/{id}
+        [SwaggerOperation(Summary = "Delete an order by ID", Description = "Removes the specified order from the system.")]
+        [SwaggerResponse(200, "Order deleted successfully.")]
+        [SwaggerResponse(404, "Order not found.")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(int id)
         {

@@ -1,5 +1,6 @@
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using ProductsAPI.Data;
 using ProductsAPI.Interfaces;
 using ProductsAPI.Services;
@@ -9,10 +10,10 @@ using ProductsAPI.Services;
 Env.Load();
 
 // Retrieve database connection details from environment variables
-var dbHost = Environment.GetEnvironmentVariable("DB_HOST"); 
-var dbPort = Environment.GetEnvironmentVariable("DB_PORT"); 
-var dbDatabaseName = Environment.GetEnvironmentVariable("DB_DATABASE"); 
-var dbUser = Environment.GetEnvironmentVariable("DB_USERNAME"); 
+var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
+var dbDatabaseName = Environment.GetEnvironmentVariable("DB_DATABASE");
+var dbUser = Environment.GetEnvironmentVariable("DB_USERNAME");
 var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
 
 // Build the connection string for MySQL using the retrieved environment variables
@@ -34,7 +35,13 @@ builder.Services.AddScoped<IOrderService, OrderService>(); // Order service regi
 // Add services to the container
 builder.Services.AddControllers(); // Add controllers for API endpoints
 builder.Services.AddEndpointsApiExplorer(); // Add support for endpoint exploration
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Products and orders management system - API", Version = "v1" });
+    // Customize Swagger UI settings here.
+    c.EnableAnnotations();
+}
+);
 
 
 var app = builder.Build();
@@ -46,10 +53,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection(); 
-app.UseAuthentication(); 
-app.UseAuthorization(); 
-app.MapControllers(); 
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
 
 
 app.Run();

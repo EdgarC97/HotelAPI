@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProductsAPI.Interfaces;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace ProductsAPI.Controllers.v1.ProductControllers
 {
@@ -16,6 +17,10 @@ namespace ProductsAPI.Controllers.v1.ProductControllers
         {
         }
 
+        // DELETE: api/v1/products/{id}
+        [SwaggerOperation(Summary = "Delete a product by ID", Description = "Removes the specified product from the system.")]
+        [SwaggerResponse(200, "Product deleted successfully.")]
+        [SwaggerResponse(404, "Product not found.")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
