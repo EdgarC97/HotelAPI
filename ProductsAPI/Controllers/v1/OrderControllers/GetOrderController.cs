@@ -12,6 +12,7 @@ namespace ProductsAPI.Controllers.v1.OrderControllers
     [ApiController]
     [Route("api/v1/orders")]
     [ApiExplorerSettings(GroupName = "v1")]
+    [Tags("Orders")]
     public class GetOrderController : OrderBaseController
     {
         public GetOrderController(IOrderService orderService) : base(orderService)

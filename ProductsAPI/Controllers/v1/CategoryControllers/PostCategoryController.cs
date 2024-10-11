@@ -12,6 +12,7 @@ namespace ProductsAPI.Controllers.v1.CategoryControllers
     [ApiController]
     [Route("api/v1/categories")]
     [ApiExplorerSettings(GroupName = "v1")]
+    [Tags("Categories")]
     public class PostCategoryController : CategoryBaseController
     {
         public PostCategoryController(ICategoryService categoryService) : base(categoryService)

@@ -29,7 +29,8 @@ namespace ProductsAPI.Services
                     Description = c.Description,
                     Price = c.Price,
                     Stock = c.Stock,
-                    CategoryId = c.CategoryId
+                    CategoryId = c.CategoryId,
+                    CategoryName = c.Category.Name
                 })
                 .ToListAsync();
 

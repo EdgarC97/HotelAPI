@@ -11,6 +11,7 @@ namespace ProductsAPI.Controllers.v1.CategoryControllers
     [ApiController]
     [Route("api/v1/categories")]
     [ApiExplorerSettings(GroupName = "v1")]
+    [Tags("Categories")]
     public class DeleteCategoryController : CategoryBaseController
     {
         public DeleteCategoryController(ICategoryService categoryService) : base(categoryService)

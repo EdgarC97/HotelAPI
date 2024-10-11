@@ -32,8 +32,18 @@ namespace ProductsAPI.Services
                     OrderProducts = o.OrderProducts.Select(op => new OrderProductDTO
                     {
                         ProductId = op.ProductId,
-                        Quantity = op.Quantity
-                    }).ToList()
+                        Quantity = op.Quantity,
+                        Price = _context.Products
+                            .Where(p => p.Id == op.ProductId)
+                            .Select(p => p.Price)
+                            .FirstOrDefault()
+                    }).ToList(),
+                    TotalPrice = o.OrderProducts.Sum(op =>
+                        _context.Products
+                            .Where(p => p.Id == op.ProductId)
+                            .Select(p => p.Price)
+                            .FirstOrDefault() * op.Quantity 
+                    )
                 })
                 .ToListAsync();
 
@@ -42,7 +52,10 @@ namespace ProductsAPI.Services
                 return (null, "No orders found. Please check back later!");
             }
 
-            return (orders, "Orders retrieved successfully!");
+            
+            string message = $"Orders retrieved successfully! Total Order: {orders.Sum(o => o.TotalPrice):C}";
+
+            return (orders, message); 
         }
 
         public async Task<(OrderDTO order, string message)> GetOrderByIdAsync(int id)

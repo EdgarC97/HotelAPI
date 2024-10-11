@@ -12,6 +12,7 @@ namespace ProductsAPI.Controllers.v1.ProductControllers
     [ApiController]
     [Route("api/v1/products")]
     [ApiExplorerSettings(GroupName = "v1")]
+    [Tags("Products")]
     public class GetProductController : ProductBaseController
     {
         public GetProductController(IProductService productService) : base(productService)
@@ -30,7 +31,7 @@ namespace ProductsAPI.Controllers.v1.ProductControllers
             {
                 return NotFound(new { message });
             }
-            return Ok(new { message, data = products });
+            return Ok(new {message, data = products });
         }
 
         // GET: api/v1/products/{id}

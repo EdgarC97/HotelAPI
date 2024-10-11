@@ -13,6 +13,7 @@ namespace ProductsAPI.Controllers.v1.OrderControllers
     [ApiController]
     [Route("api/v1/orders")]
     [ApiExplorerSettings(GroupName = "v1")]
+    [Tags("Orders")]
     public class PostOrderController : OrderBaseController
     {
         public PostOrderController(IOrderService orderService) : base(orderService)

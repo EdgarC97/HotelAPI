@@ -12,6 +12,7 @@ namespace ProductsAPI.Controllers.v1.ProductControllers
     [ApiController]
     [Route("api/v1/products")]
     [ApiExplorerSettings(GroupName = "v1")]
+    [Tags("Products")]
     public class DeleteProductController : ProductBaseController
     {
         public DeleteProductController(IProductService productService) : base(productService)

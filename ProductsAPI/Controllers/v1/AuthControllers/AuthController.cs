@@ -14,6 +14,7 @@ namespace ProductsAPI.Controllers.v1.AuthControllers
     [ApiController]
     [AllowAnonymous]
     [Route("api/v1/auth")]
+    [Tags("Autentication")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;

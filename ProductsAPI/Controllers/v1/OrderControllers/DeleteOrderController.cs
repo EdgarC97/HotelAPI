@@ -11,6 +11,7 @@ namespace ProductsAPI.Controllers.v1.OrderControllers
     [ApiController]
     [Route("api/v1/orders")]
     [ApiExplorerSettings(GroupName = "v1")]
+    [Tags("Orders")]
     public class DeleteOrderController : OrderBaseController
     {
         public DeleteOrderController(IOrderService orderService) : base(orderService)

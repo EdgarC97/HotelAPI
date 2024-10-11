@@ -13,5 +13,6 @@ namespace ProductsAPI.DTOS
         public string CustomerAddress { get; set; }
         public string CustomerContact { get; set; }
         public List<OrderProductDTO> OrderProducts { get; set; }
+        public decimal TotalPrice { get; set; }
     }
 }
