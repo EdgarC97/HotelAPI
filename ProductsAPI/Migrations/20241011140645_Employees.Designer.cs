@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductsAPI.Data;
 
@@ -11,9 +12,11 @@ using ProductsAPI.Data;
 namespace ProductsAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241011140645_Employees")]
+    partial class Employees
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,44 +146,6 @@ namespace ProductsAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "luis.fernandez@example.com",
-                            FirstName = "Luis",
-                            IdentificationNumber = "EMP123456",
-                            LastName = "Fernández",
-                            Password = "hashed_password_1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "clara.torres@example.com",
-                            FirstName = "Clara",
-                            IdentificationNumber = "EMP234567",
-                            LastName = "Torres",
-                            Password = "hashed_password_2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "javier.ramirez@example.com",
-                            FirstName = "Javier",
-                            IdentificationNumber = "EMP345678",
-                            LastName = "Ramírez",
-                            Password = "hashed_password_3"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Email = "elena.sanchez@example.com",
-                            FirstName = "Elena",
-                            IdentificationNumber = "EMP456789",
-                            LastName = "Sánchez",
-                            Password = "hashed_password_4"
-                        });
                 });
 
             modelBuilder.Entity("ProductsAPI.Models.Order", b =>
@@ -220,7 +185,7 @@ namespace ProductsAPI.Migrations
                             CustomerAddress = "123 Elm St",
                             CustomerContact = "555-1234",
                             CustomerName = "John Doe",
-                            OrderDate = new DateTime(2024, 10, 11, 9, 8, 44, 903, DateTimeKind.Local).AddTicks(1458)
+                            OrderDate = new DateTime(2024, 10, 11, 9, 6, 45, 17, DateTimeKind.Local).AddTicks(485)
                         },
                         new
                         {
@@ -228,7 +193,7 @@ namespace ProductsAPI.Migrations
                             CustomerAddress = "456 Oak St",
                             CustomerContact = "555-5678",
                             CustomerName = "Jane Smith",
-                            OrderDate = new DateTime(2024, 10, 11, 9, 8, 44, 903, DateTimeKind.Local).AddTicks(1488)
+                            OrderDate = new DateTime(2024, 10, 11, 9, 6, 45, 17, DateTimeKind.Local).AddTicks(518)
                         });
                 });
 

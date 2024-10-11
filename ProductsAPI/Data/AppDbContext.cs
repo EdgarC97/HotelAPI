@@ -20,6 +20,7 @@ namespace ProductsAPI.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         // Method called when the model for a derived context is being created.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,6 +30,7 @@ namespace ProductsAPI.Data
             ProductSeeder.Seed(modelBuilder);
             OrderSeeder.Seed(modelBuilder);
             OrderProductSeeder.Seed(modelBuilder);
+            EmployeeSeeder.Seed(modelBuilder);
             
             // Call the base class implementation.
             base.OnModelCreating(modelBuilder);

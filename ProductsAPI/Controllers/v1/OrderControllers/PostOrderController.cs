@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductsAPI.DTOS;
 using ProductsAPI.Interfaces;
@@ -23,6 +24,7 @@ namespace ProductsAPI.Controllers.v1.OrderControllers
         [SwaggerResponse(200, "Order created successfully.", typeof(OrderDTO))]
         [SwaggerResponse(400, "Invalid order details.")]
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<OrderDTO>> CreateOrder([FromBody] CreateOrderDTO createOrderDto)
         {
             if (!ModelState.IsValid)
